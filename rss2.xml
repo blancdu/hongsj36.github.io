@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>세지니의 소소한 개발 이야기</title>
+    <link>http://hongsj36.github.io/</link>
+    
+    <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>초보 개발자의 일기장</description>
+    <pubDate>Fri, 15 May 2020 12:59:01 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>[BOJ] 11660. 구간 합 구하기 5</title>
+      <link>http://hongsj36.github.io/2020/03/14/BOJ_11660/</link>
+      <guid>http://hongsj36.github.io/2020/03/14/BOJ_11660/</guid>
+      <pubDate>Sat, 14 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;11660-구간-합-구하기-5&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#11660-구간-합-구하기-5&quot;&gt;&lt;/a&gt; 11660. 구간 합 구하기 5&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11660&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="11660-구간-합-구하기-5"><a class="markdownIt-Anchor" href="#11660-구간-합-구하기-5"></a> 11660. 구간 합 구하기 5</h3><ul><li><a href="https://www.acmicpc.net/problem/11660" target="_blank" rel="noopener">문제링크</a><a id="more"></a></li><li>내 코드</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">input = sys.stdin.readline</span><br><span class="line"></span><br><span class="line">N, M = map(int, input().split())</span><br><span class="line">MAP = [list(map(int, input().split())) <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line">DP = [[<span class="number">0</span>] * (N + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(N + <span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, N + <span class="number">1</span>):</span><br><span class="line">        DP[i][j] = MAP[i<span class="number">-1</span>][j<span class="number">-1</span>] + DP[i][j<span class="number">-1</span>] + DP[i<span class="number">-1</span>][j] - DP[i<span class="number">-1</span>][j<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(M):</span><br><span class="line">    x1, y1, x2, y2 = map(int, input().split())</span><br><span class="line">    print(DP[x2][y2] - DP[x1<span class="number">-1</span>][y2] - DP[x2][y1<span class="number">-1</span>] + DP[x1<span class="number">-1</span>][y1<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/14/BOJ_11660/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[BOJ] 1991. 트리 순회</title>
+      <link>http://hongsj36.github.io/2020/03/13/BOJ_1991/</link>
+      <guid>http://hongsj36.github.io/2020/03/13/BOJ_1991/</guid>
+      <pubDate>Fri, 13 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;1991-트리-순회&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1991-트리-순회&quot;&gt;&lt;/a&gt; 1991. 트리 순회&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1991&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="1991-트리-순회"><a class="markdownIt-Anchor" href="#1991-트리-순회"></a> 1991. 트리 순회</h3><ul><li><a href="https://www.acmicpc.net/problem/1991" target="_blank" rel="noopener">문제링크</a><a id="more"></a></li><li>내 코드</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS1</span><span class="params">(node)</span>:</span>  <span class="comment"># (루트) (왼쪽 자식) (오른쪽 자식)</span></span><br><span class="line">    <span class="keyword">if</span> node == <span class="string">'.'</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    print(node,end=<span class="string">''</span>)</span><br><span class="line">    DFS1(my_dict[node][<span class="number">0</span>])</span><br><span class="line">    DFS1(my_dict[node][<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS2</span><span class="params">(node)</span>:</span>  <span class="comment"># (왼쪽 자식) (루트) (오른쪽 자식)</span></span><br><span class="line">    <span class="keyword">if</span> node == <span class="string">'.'</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    DFS2(my_dict[node][<span class="number">0</span>])</span><br><span class="line">    print(node, end=<span class="string">''</span>)</span><br><span class="line">    DFS2(my_dict[node][<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS3</span><span class="params">(node)</span>:</span>  <span class="comment"># (왼쪽 자식) (오른쪽 자식) (루트)</span></span><br><span class="line">    <span class="keyword">if</span> node == <span class="string">'.'</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    DFS3(my_dict[node][<span class="number">0</span>])</span><br><span class="line">    DFS3(my_dict[node][<span class="number">1</span>])</span><br><span class="line">    print(node, end=<span class="string">''</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">N = int(input())</span><br><span class="line">my_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(N):</span><br><span class="line">    root, left, right = input().split()</span><br><span class="line">    my_dict[root] = [left, right]</span><br><span class="line"></span><br><span class="line">DFS1(<span class="string">'A'</span>)</span><br><span class="line">print()</span><br><span class="line">DFS2(<span class="string">'A'</span>)</span><br><span class="line">print()</span><br><span class="line">DFS3(<span class="string">'A'</span>)</span><br><span class="line">print()</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/13/BOJ_1991/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[BOJ] 1932. 정수 삼각형</title>
+      <link>http://hongsj36.github.io/2020/03/12/BOJ_1932/</link>
+      <guid>http://hongsj36.github.io/2020/03/12/BOJ_1932/</guid>
+      <pubDate>Thu, 12 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;1932-정수-삼각형&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1932-정수-삼각형&quot;&gt;&lt;/a&gt; 1932. 정수 삼각형&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1932&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="1932-정수-삼각형"><a class="markdownIt-Anchor" href="#1932-정수-삼각형"></a> 1932. 정수 삼각형</h3><ul><li><a href="https://www.acmicpc.net/problem/1932" target="_blank" rel="noopener">문제링크</a><a id="more"></a></li><li>내 코드</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">N = int(input())</span><br><span class="line">DATA = [list(map(int, input().split())) <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>):</span><br><span class="line">        temp = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> j != <span class="number">0</span>:</span><br><span class="line">            temp = DATA[i<span class="number">-1</span>][j<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">if</span> j != i:</span><br><span class="line">            temp = max(temp, DATA[i<span class="number">-1</span>][j])</span><br><span class="line">        DATA[i][j] += temp</span><br><span class="line">print(max(DATA[<span class="number">-1</span>]))</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/12/BOJ_1932/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[BOJ] 1629. 곱셈</title>
+      <link>http://hongsj36.github.io/2020/03/11/BOJ_1629/</link>
+      <guid>http://hongsj36.github.io/2020/03/11/BOJ_1629/</guid>
+      <pubDate>Wed, 11 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;1629-곱셈&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1629-곱셈&quot;&gt;&lt;/a&gt; 1629. 곱셈&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1629&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="1629-곱셈"><a class="markdownIt-Anchor" href="#1629-곱셈"></a> 1629. 곱셈</h3><ul><li><a href="https://www.acmicpc.net/problem/1629" target="_blank" rel="noopener">문제링크</a><a id="more"></a></li><li>내 코드</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_calc</span><span class="params">(A, B, C)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> B == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> B % <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> (my_calc(A, B<span class="number">-1</span>, C) * A) % C</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (my_calc(A, B//<span class="number">2</span>, C) ** <span class="number">2</span>) % C</span><br><span class="line"></span><br><span class="line">print(my_calc(*map(int, input().split())))</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/11/BOJ_1629/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[BOJ] 1149. RGB거리</title>
+      <link>http://hongsj36.github.io/2020/03/10/BOJ_1149/</link>
+      <guid>http://hongsj36.github.io/2020/03/10/BOJ_1149/</guid>
+      <pubDate>Tue, 10 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;1149-rgb거리&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1149-rgb거리&quot;&gt;&lt;/a&gt; 1149. RGB거리&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1149&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="1149-rgb거리"><a class="markdownIt-Anchor" href="#1149-rgb거리"></a> 1149. RGB거리</h3><ul><li><a href="https://www.acmicpc.net/problem/1149" target="_blank" rel="noopener">문제링크</a><a id="more"></a></li><li>내 코드</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">N = int(input())</span><br><span class="line">MAP = [list(map(int, input().split())) <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line">DP = [[<span class="number">0</span>] * <span class="number">3</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line">DP[<span class="number">0</span>] = MAP[<span class="number">0</span>][:]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        temp = []</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            <span class="keyword">if</span> t != j:</span><br><span class="line">                temp.append(DP[i<span class="number">-1</span>][t])</span><br><span class="line">        DP[i][j] = MAP[i][j] + min(temp)</span><br><span class="line">print(min(DP[<span class="number">-1</span>]))</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/10/BOJ_1149/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[BOJ] 11725. 트리의 부모 찾기</title>
+      <link>http://hongsj36.github.io/2020/03/09/BOJ_11725/</link>
+      <guid>http://hongsj36.github.io/2020/03/09/BOJ_11725/</guid>
+      <pubDate>Mon, 09 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;11725-트리의-부모-찾기&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#11725-트리의-부모-찾기&quot;&gt;&lt;/a&gt; 11725. 트리의 부모 찾기&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11725&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="11725-트리의-부모-찾기"><a class="markdownIt-Anchor" href="#11725-트리의-부모-찾기"></a> 11725. 트리의 부모 찾기</h3><ul><li><a href="https://www.acmicpc.net/problem/11725" target="_blank" rel="noopener">문제링크</a><a id="more"></a></li><li>내 코드</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">N = int(input())</span><br><span class="line">my_dict = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(N - <span class="number">1</span>):</span><br><span class="line">    n1, n2 = map(int, input().split())</span><br><span class="line">    <span class="keyword">if</span> n1 <span class="keyword">not</span> <span class="keyword">in</span> my_dict:</span><br><span class="line">        my_dict[n1] = [n2]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        my_dict[n1].append(n2)</span><br><span class="line">    <span class="keyword">if</span> n2 <span class="keyword">not</span> <span class="keyword">in</span> my_dict:</span><br><span class="line">        my_dict[n2] = [n1]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        my_dict[n2].append(n1)</span><br><span class="line">p = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line">p[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">stack = [<span class="number">1</span>]</span><br><span class="line"><span class="keyword">while</span> stack:</span><br><span class="line">    n = stack.pop()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> my_dict[n]:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> p[i]:</span><br><span class="line">            p[i] = n</span><br><span class="line">            stack.append(i)</span><br><span class="line">print(*p[<span class="number">2</span>:], sep=<span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/09/BOJ_11725/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[BOJ] 11053. 가장 긴 증가하는 부분 수열</title>
+      <link>http://hongsj36.github.io/2020/03/08/BOJ_11053/</link>
+      <guid>http://hongsj36.github.io/2020/03/08/BOJ_11053/</guid>
+      <pubDate>Sun, 08 Mar 2020 04:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;11053-가장-긴-증가하는-부분-수열&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#11053-가장-긴-증가하는-부분-수열&quot;&gt;&lt;/a&gt; 11053. 가장 긴 증가하는 부분 수열&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/11053&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="11053-가장-긴-증가하는-부분-수열"><a class="markdownIt-Anchor" href="#11053-가장-긴-증가하는-부분-수열"></a> 11053. 가장 긴 증가하는 부분 수열</h3><ul><li><a href="https://www.acmicpc.net/problem/11053" target="_blank" rel="noopener">문제링크</a><a id="more"></a></li><li>내 코드</li></ul><div class="note warning">            <h4 id="check-point"><a class="markdownIt-Anchor" href="#check-point"></a> Check Point</h4><p>구글에 <strong>Longest Increasing Subsequence</strong> 검색해서 공부하고 풀어보자. DP문제 중 하나이다.</p>          </div><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">A = int(input())</span><br><span class="line">LIST = list(map(int, input().split()))</span><br><span class="line"></span><br><span class="line">my_list = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> LIST:</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> my_list:</span><br><span class="line">        <span class="keyword">if</span> i &lt;= l[<span class="number">-1</span>]:</span><br><span class="line">            l[<span class="number">-1</span>] = i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> my_list:</span><br><span class="line">            my_list.append([i])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            my_list.append(my_list[<span class="number">-1</span>] + [i])</span><br><span class="line">result = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> sub_list <span class="keyword">in</span> my_list:</span><br><span class="line">    sub_res = len(sub_list)</span><br><span class="line">    <span class="keyword">if</span> sub_res &gt; result:</span><br><span class="line">        result = sub_res</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/08/BOJ_11053/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[SWEA] 3752. 가능한 시험 점수</title>
+      <link>http://hongsj36.github.io/2020/03/07/SWEA_3752/</link>
+      <guid>http://hongsj36.github.io/2020/03/07/SWEA_3752/</guid>
+      <pubDate>Sat, 07 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;3752-가능한-시험-점수-d4&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#3752-가능한-시험-점수-d4&quot;&gt;&lt;/a&gt; 3752. 가능한 시험 점수 &lt;code&gt;D4&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;문제의 저작권은 SW Expert Academy에 있습니다.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWHPkqBqAEsDFAUn&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="3752-가능한-시험-점수-d4"><a class="markdownIt-Anchor" href="#3752-가능한-시험-점수-d4"></a> 3752. 가능한 시험 점수 <code>D4</code></h3><ul><li>문제의 저작권은 SW Expert Academy에 있습니다.</li><li><a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AWHPkqBqAEsDFAUn" target="_blank" rel="noopener">문제링크</a></li></ul><a id="more"></a><ul><li><strong>내 코드</strong></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">dx = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">dy = (<span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS</span><span class="params">(depth, sum)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> result</span><br><span class="line">    <span class="keyword">if</span> depth == N:</span><br><span class="line">        result.add(sum)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(N):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> visited[i]:</span><br><span class="line">            visited[i] = <span class="literal">True</span></span><br><span class="line">            DFS(depth + <span class="number">1</span>, sum + DATA[i])</span><br><span class="line">            DFS(depth + <span class="number">1</span>, sum)</span><br><span class="line">            visited[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">T = int(input())</span><br><span class="line"><span class="keyword">for</span> test_case <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">1</span> + T):</span><br><span class="line">    N = int(input())</span><br><span class="line">    DATA = list(map(int, input().split()))</span><br><span class="line">    result = set()</span><br><span class="line">    result.add(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(N):</span><br><span class="line">        temp = []</span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> result:</span><br><span class="line">            temp.append(DATA[i] + num)</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> temp:</span><br><span class="line">            result.add(t)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'#&#123;&#125; &#123;&#125;'</span>.format(test_case, len(result)))</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/07/SWEA_3752/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[SWEA] 2819. 격자판의 숫자 이어 붙이기</title>
+      <link>http://hongsj36.github.io/2020/03/06/SWEA_2819/</link>
+      <guid>http://hongsj36.github.io/2020/03/06/SWEA_2819/</guid>
+      <pubDate>Fri, 06 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;2819-격자판의-숫자-이어-붙이기-d4&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#2819-격자판의-숫자-이어-붙이기-d4&quot;&gt;&lt;/a&gt; 2819. 격자판의 숫자 이어 붙이기 &lt;code&gt;D4&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;문제의 저작권은 SW Expert Academy에 있습니다.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7I5fgqEogDFAXB&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="2819-격자판의-숫자-이어-붙이기-d4"><a class="markdownIt-Anchor" href="#2819-격자판의-숫자-이어-붙이기-d4"></a> 2819. 격자판의 숫자 이어 붙이기 <code>D4</code></h3><ul><li>문제의 저작권은 SW Expert Academy에 있습니다.</li><li><a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV7I5fgqEogDFAXB" target="_blank" rel="noopener">문제링크</a></li></ul><a id="more"></a><ul><li><strong>내 코드</strong></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">dx = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">dy = (<span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS</span><span class="params">(y, x, s)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> result</span><br><span class="line">    <span class="keyword">if</span> len(s) == <span class="number">7</span>:</span><br><span class="line">        result.add(s)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">        ny, nx = y + dy[d], x + dx[d]</span><br><span class="line">        <span class="keyword">if</span> <span class="number">0</span> &lt;= ny &lt; <span class="number">4</span> <span class="keyword">and</span> <span class="number">0</span> &lt;= nx &lt; <span class="number">4</span>:</span><br><span class="line">            DFS(ny, nx, s + MAP[ny][nx])</span><br><span class="line"></span><br><span class="line">T = int(input())</span><br><span class="line"><span class="keyword">for</span> test_case <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">1</span> + T):</span><br><span class="line">    MAP = [list(input().split()) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">4</span>)]</span><br><span class="line">    result = set()</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">            DFS(r, c, MAP[r][c])</span><br><span class="line">    print(<span class="string">'#&#123;&#125; &#123;&#125;'</span>.format(test_case, len(result)))</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/06/SWEA_2819/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>[SWEA] 1865. 동철이의 일 분배</title>
+      <link>http://hongsj36.github.io/2020/03/05/SWEA_1865/</link>
+      <guid>http://hongsj36.github.io/2020/03/05/SWEA_1865/</guid>
+      <pubDate>Thu, 05 Mar 2020 03:00:00 GMT</pubDate>
+      <description>
+      
+        &lt;h3 id=&quot;1865-동철이의-일-분배-d4&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1865-동철이의-일-분배-d4&quot;&gt;&lt;/a&gt; 1865. 동철이의 일 분배 &lt;code&gt;D4&lt;/code&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;문제의 저작권은 SW Expert Academy에 있습니다.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LuHfqDz8DFAXc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;문제링크&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<h3 id="1865-동철이의-일-분배-d4"><a class="markdownIt-Anchor" href="#1865-동철이의-일-분배-d4"></a> 1865. 동철이의 일 분배 <code>D4</code></h3><ul><li>문제의 저작권은 SW Expert Academy에 있습니다.</li><li><a href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5LuHfqDz8DFAXc" target="_blank" rel="noopener">문제링크</a></li></ul><a id="more"></a><ul><li><strong>내 코드</strong></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DFS</span><span class="params">(n, s)</span>:</span></span><br><span class="line">    <span class="keyword">global</span> result</span><br><span class="line">    <span class="keyword">if</span> n == N <span class="keyword">and</span> s &gt; result:</span><br><span class="line">        result = s</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> s &lt;= result:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(N):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> visited[i]:</span><br><span class="line">                visited[i] = <span class="literal">True</span></span><br><span class="line">                DFS(n + <span class="number">1</span>, s * MAP[i][n] / <span class="number">100</span>)</span><br><span class="line">                visited[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">T = int(input())</span><br><span class="line"><span class="keyword">for</span> test_case <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">1</span> + T):</span><br><span class="line">    N = int(input())</span><br><span class="line">    MAP = [list(map(int, input().split())) <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line"></span><br><span class="line">    result = <span class="number">0</span></span><br><span class="line">    visited = [<span class="literal">False</span>] * N</span><br><span class="line">    DFS(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    print(<span class="string">'#&#123;&#125; &#123;:.6f&#125;'</span>.format(test_case, result * <span class="number">100</span>))</span><br></pre></td></tr></table></figure>]]></content:encoded>
+      
+      <comments>http://hongsj36.github.io/2020/03/05/SWEA_1865/#disqus_thread</comments>
+    </item>
+    
+  </channel>
+</rss>
