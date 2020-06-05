@@ -1230,8 +1230,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>삼성 SW 역량 테스트</tag>
         <tag>DP</tag>
+        <tag>삼성 SW 역량 테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -1393,8 +1393,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -1418,8 +1418,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -1921,8 +1921,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -1944,8 +1944,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -1967,31 +1967,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>[BOJ] 14502. 연구소</title>
-    <url>/2020/02/07/BOJ_14502/</url>
-    <content><![CDATA[<h3 id="14502-연구소"><a class="markdownIt-Anchor" href="#14502-연구소"></a> 14502. 연구소</h3>
-<ul>
-<li><a href="https://www.acmicpc.net/problem/14502" target="_blank" rel="noopener">문제링크</a></li>
-</ul>
-<a id="more"></a>
-<ul>
-<li>내 코드</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line">N, M = map(int, input().split())</span><br><span class="line">my_map = [list(map(int, input().split())) <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line">space = <span class="number">0</span></span><br><span class="line">zeros = []</span><br><span class="line">Q = deque()</span><br><span class="line">result = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">dx = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>]</span><br><span class="line">dy = [<span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> range(N):</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> range(M):</span><br><span class="line">        <span class="keyword">if</span> my_map[r][c] == <span class="number">0</span>:</span><br><span class="line">            zeros.append((r, c))</span><br><span class="line">            space += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> my_map[r][c] == <span class="number">2</span>:</span><br><span class="line">            space += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> walls <span class="keyword">in</span> combinations(zeros, <span class="number">3</span>):</span><br><span class="line">    visited = [[<span class="literal">False</span>] * M <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line">    <span class="keyword">for</span> r, c <span class="keyword">in</span> walls:</span><br><span class="line">        visited[r][c] = <span class="literal">True</span>  <span class="comment"># 가상 벽</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(N):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(M):</span><br><span class="line">            <span class="keyword">if</span> my_map[r][c] == <span class="number">2</span> <span class="keyword">and</span> <span class="keyword">not</span> visited[r][c]:</span><br><span class="line">                Q.append((r, c))</span><br><span class="line">                <span class="keyword">while</span> Q:</span><br><span class="line">                    y, x = Q.pop()</span><br><span class="line">                    visited[y][x] = <span class="literal">True</span></span><br><span class="line">                    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">                        ny, nx = y + dy[i], x + dx[i]</span><br><span class="line">                        <span class="keyword">if</span> <span class="number">0</span> &lt;= ny &lt; N <span class="keyword">and</span> <span class="number">0</span> &lt;= nx &lt; M <span class="keyword">and</span> \</span><br><span class="line">                                <span class="keyword">not</span> visited[ny][nx] <span class="keyword">and</span> \</span><br><span class="line">                                my_map[ny][nx] != <span class="number">1</span>:</span><br><span class="line">                            Q.append((ny, nx))</span><br><span class="line"></span><br><span class="line">    virus = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(N):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(M):</span><br><span class="line">            <span class="keyword">if</span> visited[r][c]:</span><br><span class="line">                virus += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> result &lt; space - virus:</span><br><span class="line">        result = space - virus</span><br><span class="line"></span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>코딩 테스트 준비</category>
-        <category>Baekjoon Online Judge</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>BOJ</tag>
         <tag>Simulation</tag>
-        <tag>삼성 SW 역량 테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -2013,8 +1990,31 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[BOJ] 14502. 연구소</title>
+    <url>/2020/02/07/BOJ_14502/</url>
+    <content><![CDATA[<h3 id="14502-연구소"><a class="markdownIt-Anchor" href="#14502-연구소"></a> 14502. 연구소</h3>
+<ul>
+<li><a href="https://www.acmicpc.net/problem/14502" target="_blank" rel="noopener">문제링크</a></li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>내 코드</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line">N, M = map(int, input().split())</span><br><span class="line">my_map = [list(map(int, input().split())) <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line">space = <span class="number">0</span></span><br><span class="line">zeros = []</span><br><span class="line">Q = deque()</span><br><span class="line">result = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">dx = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>]</span><br><span class="line">dy = [<span class="number">-1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r <span class="keyword">in</span> range(N):</span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> range(M):</span><br><span class="line">        <span class="keyword">if</span> my_map[r][c] == <span class="number">0</span>:</span><br><span class="line">            zeros.append((r, c))</span><br><span class="line">            space += <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> my_map[r][c] == <span class="number">2</span>:</span><br><span class="line">            space += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> walls <span class="keyword">in</span> combinations(zeros, <span class="number">3</span>):</span><br><span class="line">    visited = [[<span class="literal">False</span>] * M <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]</span><br><span class="line">    <span class="keyword">for</span> r, c <span class="keyword">in</span> walls:</span><br><span class="line">        visited[r][c] = <span class="literal">True</span>  <span class="comment"># 가상 벽</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(N):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(M):</span><br><span class="line">            <span class="keyword">if</span> my_map[r][c] == <span class="number">2</span> <span class="keyword">and</span> <span class="keyword">not</span> visited[r][c]:</span><br><span class="line">                Q.append((r, c))</span><br><span class="line">                <span class="keyword">while</span> Q:</span><br><span class="line">                    y, x = Q.pop()</span><br><span class="line">                    visited[y][x] = <span class="literal">True</span></span><br><span class="line">                    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">                        ny, nx = y + dy[i], x + dx[i]</span><br><span class="line">                        <span class="keyword">if</span> <span class="number">0</span> &lt;= ny &lt; N <span class="keyword">and</span> <span class="number">0</span> &lt;= nx &lt; M <span class="keyword">and</span> \</span><br><span class="line">                                <span class="keyword">not</span> visited[ny][nx] <span class="keyword">and</span> \</span><br><span class="line">                                my_map[ny][nx] != <span class="number">1</span>:</span><br><span class="line">                            Q.append((ny, nx))</span><br><span class="line"></span><br><span class="line">    virus = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(N):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(M):</span><br><span class="line">            <span class="keyword">if</span> visited[r][c]:</span><br><span class="line">                virus += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> result &lt; space - virus:</span><br><span class="line">        result = space - virus</span><br><span class="line"></span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>코딩 테스트 준비</category>
+        <category>Baekjoon Online Judge</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>BOJ</tag>
+        <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -2226,8 +2226,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>삼성 SW 역량 테스트</tag>
         <tag>DP</tag>
+        <tag>삼성 SW 역량 테스트</tag>
       </tags>
   </entry>
   <entry>
@@ -2306,8 +2306,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -2329,8 +2329,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
@@ -2375,8 +2375,8 @@
       <tags>
         <tag>Python</tag>
         <tag>BOJ</tag>
-        <tag>Simulation</tag>
         <tag>삼성 SW 역량 테스트</tag>
+        <tag>Simulation</tag>
       </tags>
   </entry>
   <entry>
