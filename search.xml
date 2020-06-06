@@ -1,6 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[programmers] 2019 KAKAO BLIND RECRUITMENT - 블록 게임</title>
+    <url>/2020/06/06/prog_KAKAO2019BLIND_%EB%B8%94%EB%A1%9D%20%EA%B2%8C%EC%9E%84/</url>
+    <content><![CDATA[<h3 id="2019-kakao-blind-recruitment-블록-게임"><a class="markdownIt-Anchor" href="#2019-kakao-blind-recruitment-블록-게임"></a> 2019 KAKAO BLIND RECRUITMENT - 블록 게임</h3>
+<ul>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42894" target="_blank" rel="noopener">문제링크</a><a id="more"></a>
+</li>
+<li>내 코드</li>
+</ul>
+<div class="note warning">
+            <h4 id="check-point"><a class="markdownIt-Anchor" href="#check-point"></a> Check Point</h4><p>작성중</p>
+          </div>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(board)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_safe</span><span class="params">(r, c)</span>:</span>  <span class="comment"># 보드 범위 안</span></span><br><span class="line">        <span class="keyword">nonlocal</span> R, C</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span> &lt;= r &lt; R <span class="keyword">and</span> <span class="number">0</span> &lt;= c &lt; C</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">del_block</span><span class="params">(r, c)</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> answer, drops_cnt</span><br><span class="line"></span><br><span class="line">        el = board[r][c]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># ---- 블럭 모양으로 확인 ----#</span></span><br><span class="line">        <span class="comment"># 가로 블럭 범위 확인</span></span><br><span class="line">        c1 = c2 = c</span><br><span class="line">        <span class="keyword">while</span> is_safe(r, c1 - <span class="number">1</span>) <span class="keyword">and</span> board[r][c1 - <span class="number">1</span>] == el:</span><br><span class="line">            c1 -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> is_safe(r, c2 + <span class="number">1</span>) <span class="keyword">and</span> board[r][c2 + <span class="number">1</span>] == el:</span><br><span class="line">            c2 += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> c1 == c2:</span><br><span class="line">            <span class="comment"># 블럭 최하층 내려가기</span></span><br><span class="line">            <span class="keyword">while</span> is_safe(r + <span class="number">1</span>, c) <span class="keyword">and</span> board[r + <span class="number">1</span>][c] == el:</span><br><span class="line">                r += <span class="number">1</span></span><br><span class="line">            <span class="comment"># 가로 블럭 범위 확인</span></span><br><span class="line">            c1 = c2 = c</span><br><span class="line">            <span class="keyword">while</span> is_safe(r, c1 - <span class="number">1</span>) <span class="keyword">and</span> board[r][c1 - <span class="number">1</span>] == el:</span><br><span class="line">                c1 -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> is_safe(r, c2 + <span class="number">1</span>) <span class="keyword">and</span> board[r][c2 + <span class="number">1</span>] == el:</span><br><span class="line">                c2 += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 최하층의 길이 2~3 이어야 함.</span></span><br><span class="line">        <span class="keyword">if</span> c1 == c2:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:  <span class="comment"># 최하층보다 아래에 같은 원소가 있으면 안됨.</span></span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> range(c1, c2 + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> is_safe(r + <span class="number">1</span>, c) <span class="keyword">and</span> board[r + <span class="number">1</span>][c] == el:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># ---- 제거 가능한 모양임 ----#</span></span><br><span class="line">        <span class="comment"># 위에서부터 1x1블럭 내릴 수 있나 확인</span></span><br><span class="line">        need_drop = []  <span class="comment"># 필요한 블럭 위치</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(c1, c2 + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> board[r - <span class="number">1</span>][c] != el:</span><br><span class="line">                need_drop.append(c)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> need_drop:</span><br><span class="line">            <span class="keyword">for</span> nr <span class="keyword">in</span> range(r):</span><br><span class="line">                <span class="keyword">if</span> board[nr][c]:  <span class="comment"># 막히면</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># ---- 블럭 삭제 가능 ----#</span></span><br><span class="line">        <span class="comment"># 블럭 삭제</span></span><br><span class="line">        <span class="keyword">for</span> dr <span class="keyword">in</span> range(<span class="number">-2</span>, <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> range(c1, c2 + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> board[r + dr][c] == el:</span><br><span class="line">                    board[r + dr][c] = <span class="number">0</span></span><br><span class="line">        <span class="comment"># drops True</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(c1, c2 + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> drops[c]:</span><br><span class="line">                drops[c] = <span class="literal">True</span></span><br><span class="line">                drops_cnt += <span class="number">1</span></span><br><span class="line">        answer += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># ---- solution ----#</span></span><br><span class="line">    R = len(board)  <span class="comment"># rows</span></span><br><span class="line">    C = len(board[<span class="number">0</span>])  <span class="comment"># cols</span></span><br><span class="line"></span><br><span class="line">    drops = [<span class="literal">True</span>] * C</span><br><span class="line">    drops_cnt = C</span><br><span class="line">    answer = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> drops_cnt:</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> range(C):</span><br><span class="line">            <span class="keyword">if</span> drops[c]:</span><br><span class="line">                drops[c] = <span class="literal">False</span></span><br><span class="line">                drops_cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> r <span class="keyword">in</span> range(R):</span><br><span class="line">                    <span class="keyword">if</span> board[r][c]:</span><br><span class="line">                        del_block(r, c)</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> answer</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>코딩 테스트 준비</category>
+        <category>programmers</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>programmers</tag>
+        <tag>카카오 코딩 테스트</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[programmers] 2019 KAKAO BLIND RECRUITMENT - 매칭 점수</title>
+    <url>/2020/06/05/prog_KAKAO2019BLIND_%EB%A7%A4%EC%B9%AD%20%EC%A0%90%EC%88%98/</url>
+    <content><![CDATA[<h3 id="2019-kakao-blind-recruitment-매칭-점수"><a class="markdownIt-Anchor" href="#2019-kakao-blind-recruitment-매칭-점수"></a> 2019 KAKAO BLIND RECRUITMENT - 매칭 점수</h3>
+<ul>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42893" target="_blank" rel="noopener">문제링크</a><a id="more"></a>
+</li>
+<li>내 코드</li>
+</ul>
+<div class="note warning">
+            <h4 id="check-point"><a class="markdownIt-Anchor" href="#check-point"></a> Check Point</h4><p>파이썬 정규 표현식 <a href="https://wikidocs.net/4308" target="_blank" rel="noopener">시작하기</a></p>
+          </div>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 공부중</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>코딩 테스트 준비</category>
+        <category>programmers</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>programmers</tag>
+        <tag>카카오 코딩 테스트</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[programmers] 2019 KAKAO BLIND RECRUITMENT - 길 찾기 게임</title>
+    <url>/2020/06/05/prog_KAKAO2019BLIND_%EA%B8%B8%20%EC%B0%BE%EA%B8%B0%20%EA%B2%8C%EC%9E%84/</url>
+    <content><![CDATA[<h3 id="2019-kakao-blind-recruitment-길-찾기-게임"><a class="markdownIt-Anchor" href="#2019-kakao-blind-recruitment-길-찾기-게임"></a> 2019 KAKAO BLIND RECRUITMENT - 길 찾기 게임</h3>
+<ul>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42892" target="_blank" rel="noopener">문제링크</a><a id="more"></a>
+</li>
+<li>내 코드</li>
+</ul>
+<div class="note warning">
+            <h4 id="check-point"><a class="markdownIt-Anchor" href="#check-point"></a> Check Point</h4><p>작성중</p>
+          </div>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#---- recursion limit 해제 ----#</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.setrecursionlimit(<span class="number">10</span>**<span class="number">6</span>)</span><br><span class="line"><span class="comment">#------------------------------#</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(nodeinfo)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find_root</span><span class="params">(nodeInfo)</span>:</span></span><br><span class="line">        root_y = <span class="number">-1</span></span><br><span class="line">        max_i = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nodeInfo)):</span><br><span class="line">            <span class="keyword">if</span> root_y &lt; nodeInfo[i][<span class="number">1</span>]:</span><br><span class="line">                root_y = nodeInfo[i][<span class="number">1</span>]</span><br><span class="line">                max_i = i</span><br><span class="line">        <span class="keyword">return</span> nodeInfo[max_i][<span class="number">2</span>], max_i</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">orders</span><span class="params">(my_list)</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> preorder, postorder</span><br><span class="line">        <span class="keyword">if</span> my_list:</span><br><span class="line">            num, idx = find_root(my_list)</span><br><span class="line">            preorder.append(num)  <span class="comment"># 전위</span></span><br><span class="line">            orders(my_list[:idx])</span><br><span class="line">            orders(my_list[idx+<span class="number">1</span>:])</span><br><span class="line">            postorder.append(num)  <span class="comment"># 후위</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    my_list = [[nodeinfo[i][<span class="number">0</span>], nodeinfo[i][<span class="number">1</span>], i + <span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nodeinfo))]</span><br><span class="line">    my_list.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line">    preorder, postorder = [], []</span><br><span class="line">    orders(my_list)</span><br><span class="line">    <span class="keyword">return</span> [preorder, postorder]</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>코딩 테스트 준비</category>
+        <category>programmers</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>programmers</tag>
+        <tag>카카오 코딩 테스트</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[programmers] 2019 KAKAO BLIND RECRUITMENT - 무지의 먹방 라이브</title>
+    <url>/2020/06/04/prog_KAKAO2019BLIND_%EB%AC%B4%EC%A7%80%EC%9D%98%20%EB%A8%B9%EB%B0%A9%20%EB%9D%BC%EC%9D%B4%EB%B8%8C/</url>
+    <content><![CDATA[<h3 id="2019-kakao-blind-recruitment-무지의-먹방-라이브"><a class="markdownIt-Anchor" href="#2019-kakao-blind-recruitment-무지의-먹방-라이브"></a> 2019 KAKAO BLIND RECRUITMENT - 무지의 먹방 라이브</h3>
+<ul>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42891" target="_blank" rel="noopener">문제링크</a><a id="more"></a>
+</li>
+<li>내 코드</li>
+</ul>
+<div class="note warning">
+            <h4 id="check-point"><a class="markdownIt-Anchor" href="#check-point"></a> Check Point</h4><p>작성중</p>
+          </div>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(food_times, k)</span>:</span></span><br><span class="line">    food_time_count = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> food_time <span class="keyword">in</span> food_times:</span><br><span class="line">        <span class="keyword">if</span> food_time <span class="keyword">in</span> food_time_count:</span><br><span class="line">            food_time_count[food_time] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            food_time_count[food_time] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># food_time, count / ASC by food_time</span></span><br><span class="line">    ftl = sorted(list(food_time_count.items()), key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    n = len(food_times)</span><br><span class="line">    h = <span class="number">0</span></span><br><span class="line">    cnt = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(ftl)):</span><br><span class="line">        cnt_after = cnt + n * (ftl[i][<span class="number">0</span>] - h)</span><br><span class="line">        <span class="keyword">if</span> k &lt; cnt_after:</span><br><span class="line">            target_x = (k - cnt) % n</span><br><span class="line">            x = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(food_times)):</span><br><span class="line">                <span class="keyword">if</span> food_times[j] &gt; h:</span><br><span class="line">                    <span class="keyword">if</span> x == target_x:</span><br><span class="line">                        <span class="keyword">return</span> j + <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        x += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cnt = cnt_after</span><br><span class="line">            h = ftl[i][<span class="number">0</span>]</span><br><span class="line">            n -= ftl[i][<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>코딩 테스트 준비</category>
+        <category>programmers</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>programmers</tag>
+        <tag>카카오 코딩 테스트</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[programmers] 2019 KAKAO BLIND RECRUITMENT - 후보키</title>
+    <url>/2020/06/04/prog_KAKAO2019BLIND_%ED%9B%84%EB%B3%B4%ED%82%A4/</url>
+    <content><![CDATA[<h3 id="2019-kakao-blind-recruitment-후보키"><a class="markdownIt-Anchor" href="#2019-kakao-blind-recruitment-후보키"></a> 2019 KAKAO BLIND RECRUITMENT - 후보키</h3>
+<ul>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42890" target="_blank" rel="noopener">문제링크</a><a id="more"></a>
+</li>
+<li>내 코드</li>
+</ul>
+<div class="note warning">
+            <h4 id="check-point"><a class="markdownIt-Anchor" href="#check-point"></a> Check Point</h4><p>작성중</p>
+          </div>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(relation)</span>:</span></span><br><span class="line">    N = len(relation[<span class="number">0</span>])  <span class="comment"># cols</span></span><br><span class="line">    M = len(relation)  <span class="comment"># rows</span></span><br><span class="line">    answer = <span class="number">0</span></span><br><span class="line">    keys = []  <span class="comment"># 후보키</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span> &lt;&lt; N):</span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> keys:</span><br><span class="line">            <span class="keyword">if</span> key &amp; i == key:  <span class="comment"># 최소성 불만족</span></span><br><span class="line">                <span class="keyword">break</span> </span><br><span class="line">        <span class="keyword">else</span>:  <span class="comment"># 최소성 만족</span></span><br><span class="line">            tuple_list = set()</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(M):  <span class="comment"># for rows</span></span><br><span class="line">                sub_list = []</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(N):  <span class="comment"># for cols</span></span><br><span class="line">                    <span class="keyword">if</span> i &amp; (<span class="number">1</span> &lt;&lt; k):</span><br><span class="line">                        sub_list.append(relation[j][k])</span><br><span class="line">                tuple_list.add(tuple(sub_list))</span><br><span class="line">            <span class="keyword">if</span> len(tuple_list) == M:  <span class="comment"># 유일성 만족</span></span><br><span class="line">                keys.append(i)  <span class="comment"># 후보키 등록</span></span><br><span class="line">    <span class="keyword">return</span> len(keys)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>코딩 테스트 준비</category>
+        <category>programmers</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>programmers</tag>
+        <tag>카카오 코딩 테스트</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[programmers] 2019 KAKAO BLIND RECRUITMENT - 실패율</title>
+    <url>/2020/06/03/prog_KAKAO2019BLIND_%EC%8B%A4%ED%8C%A8%EC%9C%A8/</url>
+    <content><![CDATA[<h3 id="2019-kakao-blind-recruitment-실패율"><a class="markdownIt-Anchor" href="#2019-kakao-blind-recruitment-실패율"></a> 2019 KAKAO BLIND RECRUITMENT - 실패율</h3>
+<ul>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42889" target="_blank" rel="noopener">문제링크</a><a id="more"></a>
+</li>
+<li>내 코드</li>
+</ul>
+<div class="note warning">
+            <h4 id="check-point"><a class="markdownIt-Anchor" href="#check-point"></a> Check Point</h4><p>작성중</p>
+          </div>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(N, stages)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">my_calc</span><span class="params">(x)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> data[x<span class="number">-1</span>][<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -data[x<span class="number">-1</span>][<span class="number">0</span>]/data[x<span class="number">-1</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    stage_cnt = [<span class="number">0</span>] * (N + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> stage <span class="keyword">in</span> stages:</span><br><span class="line">        stage_cnt[stage<span class="number">-1</span>] += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    data = [[<span class="number">0</span>, <span class="number">0</span>] <span class="keyword">for</span> _ <span class="keyword">in</span> range(N)]  <span class="comment"># not clear users, users</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(N + <span class="number">1</span>):  <span class="comment"># stage 1 ~ N + 1 (stage_cnt)</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(N):  <span class="comment"># stage 1 ~ N (stages)</span></span><br><span class="line">            data[j][<span class="number">1</span>] += stage_cnt[i]  <span class="comment"># users</span></span><br><span class="line">            <span class="keyword">if</span> j == i:</span><br><span class="line">                <span class="comment"># not clear users</span></span><br><span class="line">                data[i][<span class="number">0</span>] += stage_cnt[i]</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            </span><br><span class="line">    answer = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">1</span> + N)]</span><br><span class="line">    answer.sort(key=<span class="keyword">lambda</span> x: my_calc(x))</span><br><span class="line">    <span class="keyword">return</span> answer</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>코딩 테스트 준비</category>
+        <category>programmers</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>programmers</tag>
+        <tag>카카오 코딩 테스트</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[programmers] 2019 KAKAO BLIND RECRUITMENT - 오픈채팅방</title>
+    <url>/2020/06/03/prog_KAKAO2019BLIND_%EC%98%A4%ED%94%88%EC%B1%84%ED%8C%85%EB%B0%A9/</url>
+    <content><![CDATA[<h3 id="2019-kakao-blind-recruitment-오픈채팅방"><a class="markdownIt-Anchor" href="#2019-kakao-blind-recruitment-오픈채팅방"></a> 2019 KAKAO BLIND RECRUITMENT - 오픈채팅방</h3>
+<ul>
+<li><a href="https://programmers.co.kr/learn/courses/30/lessons/42888" target="_blank" rel="noopener">문제링크</a><a id="more"></a>
+</li>
+<li>내 코드</li>
+</ul>
+<div class="note warning">
+            <h4 id="check-point"><a class="markdownIt-Anchor" href="#check-point"></a> Check Point</h4><p>작성중</p>
+          </div>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solution</span><span class="params">(record)</span>:</span></span><br><span class="line">    user_info = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> rec <span class="keyword">in</span> record:</span><br><span class="line">        data = rec.split()</span><br><span class="line">        <span class="keyword">if</span> data[<span class="number">0</span>][<span class="number">0</span>] <span class="keyword">in</span> <span class="string">'EC'</span>:</span><br><span class="line">            user_info[data[<span class="number">1</span>]] = data[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    answer = []</span><br><span class="line">    <span class="keyword">for</span> rec <span class="keyword">in</span> record:</span><br><span class="line">        data = rec.split()</span><br><span class="line">        <span class="keyword">if</span> data[<span class="number">0</span>][<span class="number">0</span>] == <span class="string">'E'</span>:</span><br><span class="line">            answer.append(user_info[data[<span class="number">1</span>]] + <span class="string">"님이 들어왔습니다."</span>)</span><br><span class="line">        <span class="keyword">elif</span> data[<span class="number">0</span>][<span class="number">0</span>] == <span class="string">'L'</span>:</span><br><span class="line">            answer.append(user_info[data[<span class="number">1</span>]] + <span class="string">"님이 나갔습니다."</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> answer</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>코딩 테스트 준비</category>
+        <category>programmers</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>programmers</tag>
+        <tag>카카오 코딩 테스트</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[programmers] 2020 KAKAO BLIND RECRUITMENT - 블록 이동하기</title>
     <url>/2020/05/20/prog_KAKAO2020BLIND_%EB%B8%94%EB%A1%9D%20%EC%9D%B4%EB%8F%99%ED%95%98%EA%B8%B0/</url>
     <content><![CDATA[<h3 id="2020-kakao-blind-recruitment-블록-이동하기"><a class="markdownIt-Anchor" href="#2020-kakao-blind-recruitment-블록-이동하기"></a> 2020 KAKAO BLIND RECRUITMENT - 블록 이동하기</h3>
